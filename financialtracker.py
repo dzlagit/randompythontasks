@@ -33,7 +33,7 @@ class FinacialApp(tk.Tk):
     def widgets(self): 
         # Labels and input fields for transaction details
         self.lab = tk.Label( # Create a label for the title
-            self, text="=Finacial Tracker with Pi Chart!", font=("Courier New", 18, "bold") # Set the text and font
+            self, text="Finacial Tracker with Pi Chart!", font=("Courier New", 18, "bold") # Set the text and font
         )
         self.lab.pack(pady=10) # Add padding to the label
         self.frame_in = tk.Frame(self) # Create a frame for input fields
@@ -67,7 +67,7 @@ class FinacialApp(tk.Tk):
         )
         self.cat_drop.grid(row=0, column=5, padx=5) # Add the dropdown widget to the grid
         self.date_lab = tk.Label( # Create a label for date
-            self.frame_in, text="Date (YYYY-MM-DD):", font=("Courier New", 12) # Set the text and font
+            self.frame_in, text="Date (DD-MM-YY):", font=("Courier New", 12) # Set the text and font
         )
         self.date_lab.grid(row=0, column=6, padx=5) # Add the label to the grid
         self.date_ent = tk.Entry( # Create an entry widget for date
@@ -108,7 +108,7 @@ class FinacialApp(tk.Tk):
         self.total_lab.pack(pady=5) # Add padding to the label
         # Button for showing transaction chart
         self.show_chart_btn = tk.Button( # Create a button to show transaction chart
-            self, text="Show Trans Chart", command=self.showTransChart # Set the text and command
+            self, text="Show Pie Chart", command=self.showPieChart # Set the text and command
         )
         self.show_chart_btn.pack(pady=5) # Add the button to the window with padding
         self.updateLabel() # Update the label with total transactions
@@ -179,9 +179,9 @@ class FinacialApp(tk.Tk):
         messagebox.showinfo("Success", "Transactions saved successfully") # Show a success message
 
     # Method to show the transactions chart
-    def showTransChart(self): 
+    def showPieChart(self): 
         amounts = [float(transaction.split(" ")[0]) for transaction in self.trans] # Get the amounts from the transactions
-        plt.pie(amounts, labels=self.trans, startangle=140, autopct="%1.1f%%") # Create a pie chart
+        plt.pie(amounts, labels=self.trans, startangle=140, autopct="%1.1f%%",shadow={'ox': -0.04, 'edgecolor': 'none', 'shade': 0.9}, pctdistance=1.25, labeldistance=.2) # Create a pie chart
         plt.axis("equal") # Set the aspect ratio to be equal
         plt.show() # Show the chart
 
