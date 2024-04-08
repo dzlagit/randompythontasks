@@ -144,7 +144,7 @@ class FinacialApp(tk.Tk):
             return # Return from the method
         index = selected[0] # Get the index of the selected transaction
         transaction = self.trans[index] # Get the selected transaction
-        # Get the new description from the user
+        # Get the new description from Dthe user
         new_description = simpledialog.askstring("Edit Transaction", "Enter new description", initialvalue=transaction.split(", description: ")[1]) 
         if new_description: # Check if a new description is entered
             # Create the new transaction string
@@ -189,3 +189,4 @@ class FinacialApp(tk.Tk):
 if __name__ == "__main__": 
     app = FinacialApp() # Create an instance of the FinApp class
     app.mainloop() # Run the application
+   
